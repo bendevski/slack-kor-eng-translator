@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req,res) => {
 	const {text} = JSON.parse(req.body.payload)
+	console.log(JSON.parse(req.body.payload));
 	res.status(200).send();
 	const body = {
 		"source": "ko",
