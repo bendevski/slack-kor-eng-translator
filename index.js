@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req,res) => {
-	received.push(req.body.payload)
+	received.push(JSON.parse(req.body.payload))
 	res.status(200).send();
 });
 
