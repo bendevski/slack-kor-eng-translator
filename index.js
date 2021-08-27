@@ -13,4 +13,4 @@ app.post("/", (req,res) => {
 	received.push(res.body);
 });
 
-app.listen(8000);
+app.listen(process.env.PORT);
