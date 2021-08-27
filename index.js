@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 	res.send({logs: received});
 });
 
-app.post("/", (req,res) => {
+app.post("/", async (req,res) => {
 	const {text} = JSON.parse(req.body.payload)
 	res.status(200).send();
 	const body = {
