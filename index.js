@@ -4,11 +4,6 @@ const {TRANS_HEADERS} = require('./env.json');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded())
-let received = []
-
-app.get("/", (req, res) => {
-	res.send({logs: received});
-});
 
 app.post("/", async (req,res) => {
 	const {message, response_url} = JSON.parse(req.body.payload)
@@ -39,4 +34,4 @@ app.post("/", async (req,res) => {
 	}
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT||5000);
