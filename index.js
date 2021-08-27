@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req,res) => {
 	received.push([req.params, req.body, req.query]);
-	res.send({"challenge": req.params.challenge});
+	res.send({"challenge": req.body.challenge});
 });
 
 app.listen(process.env.PORT);
