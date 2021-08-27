@@ -6,7 +6,7 @@ app.use(express.json());
 let received = []
 
 app.get("/", (req, res) => {
-	setTimeout(()=>console.log(req.body), 10000);
+	res.send({logs: received});
 });
 
 app.post("/", (req,res) => {
