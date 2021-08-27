@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req,res) => {
-	received.push({body:req.body, params: req.params, query: req.query, payload:req.payload});
+	received.push({body:req.body, params: req.params, query: req.query, payload:req.body.payload});
 });
 
 app.listen(process.env.PORT);
