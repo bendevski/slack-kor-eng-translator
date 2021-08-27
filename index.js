@@ -31,7 +31,7 @@ app.post("/", async (req,res) => {
 	}
 	const {translatedText} = translated.data.message.result;
 	try{
-		await axios.post(response_url,{text:translatedText}, {headers:{"Content-type": "application/json"}});
+		await axios.post(response_url,{text:translatedText, response_type: "ephemeral"}, {headers:{"Content-type": "application/json"}});
 	}
 	catch (err){
 		console.log(err);
