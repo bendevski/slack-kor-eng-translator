@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req,res) => {
-	const {message} = JSON.parse(req.body.payload)
+	const {message, response_url} = JSON.parse(req.body.payload)
 	const {text} = message;
 	res.status(200).send();
 	const body = {
@@ -24,10 +24,18 @@ app.post("/", async (req,res) => {
 	try{
 		let translated = await axios.post("https://openapi.naver.com/v1/papago/n2mt", body,{headers: TRANS_HEADERS});
 		const {translatedText} = translated.data.message.result;
-		received.push(translatedText);
 	} 
 	catch (err){
 		console.log(err);
+		return;
+	}
+
+	try{
+		await axios.post(response_url,{text:translatedText}, {headers:{"Content-type": "application/json"}});
+	}
+	catch (err){
+		console.log(err);
+		return;
 	}
 });
 
