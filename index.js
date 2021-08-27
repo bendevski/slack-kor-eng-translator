@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req,res) => {
-	received.push(req);
+	console.log(req);
 });
 
 app.listen(process.env.PORT);
