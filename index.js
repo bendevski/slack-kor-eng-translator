@@ -21,15 +21,15 @@ app.post("/", async (req,res) => {
 	}
 	
 	console.log({body:body, headers:TRANS_HEADERS})
+	let translated;
 	try{
-		let translated = await axios.post("https://openapi.naver.com/v1/papago/n2mt", body,{headers: TRANS_HEADERS});
-		const {translatedText} = translated.data.message.result;
+		translated = await axios.post("https://openapi.naver.com/v1/papago/n2mt", body,{headers: TRANS_HEADERS});
 	} 
 	catch (err){
 		console.log(err);
 		return;
 	}
-
+	const {translatedText} = translated.data.message.result;
 	try{
 		await axios.post(response_url,{text:translatedText}, {headers:{"Content-type": "application/json"}});
 	}
