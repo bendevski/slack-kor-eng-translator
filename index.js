@@ -10,8 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req,res) => {
-	received.push([req.params, req.body, req.query]);
-	res.send({"challenge": req.body.challenge});
+	received.push(req.body);
 });
 
 app.listen(process.env.PORT);
