@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req,res) => {
-	received.push(req.params);
+	received.push([req.params, req.body, req.query]);
 	res.send({"challenge": req.params.challenge});
 });
 
