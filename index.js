@@ -18,10 +18,12 @@ app.post("/", async (req,res) => {
 		"target": "en",
 		"text": text
 	}
+	
 	try{
-		let translated = await axios.post("https://openapi.naver.com/v1/papago/n2mt",headers=TRANS_HEADERS, body=body);
-	} catch{(err)=>console.log(err)}
-	received.push(translated);
+		let translated = await axios.post("https://openapi.naver.com/v1/papago/n2mt", body,TRANS_HEADERS);
+		received.push(translated);
+	} 
+	catch{(err)=>console.log(err)}
 });
 
 app.listen(process.env.PORT);
