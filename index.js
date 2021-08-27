@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req,res) => {
-	console.log(req.payload);
+	console.log(req);
 	res.status(200).send();
 });
 
