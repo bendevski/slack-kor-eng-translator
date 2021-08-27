@@ -23,7 +23,8 @@ app.post("/", async (req,res) => {
 	console.log({body:body, headers:TRANS_HEADERS})
 	try{
 		let translated = await axios.post("https://openapi.naver.com/v1/papago/n2mt", body,{headers: TRANS_HEADERS});
-		console.log(translated);
+		const {translatedText} = translated.message.result;
+		received.push(translatedText);
 	} 
 	catch (err){
 		console.log(err);
