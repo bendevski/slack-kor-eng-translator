@@ -11,6 +11,6 @@ app.get("/", (req, res) => {
 
 app.post("/", (req,res) => {
 	received.push(res.body);
-};
+});
 
 app.listen(8000);
